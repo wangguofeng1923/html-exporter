@@ -19,13 +19,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -65,7 +59,7 @@ public class ExcelStyleGenerator {
 
 	protected void applyBackground(Style style, XSSFCellStyle cellStyle) {
 		if (style.isBackgroundSet()) {
-			cellStyle.setFillPattern(XSSFCellStyle.SOLID_FOREGROUND);
+			cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 			cellStyle.setFillForegroundColor(new XSSFColor(style.getProperty(CssColorProperty.BACKGROUND)));
 		}
 	}
@@ -78,19 +72,19 @@ public class ExcelStyleGenerator {
 					.getProperty(CssColorProperty.BORDER_COLOR) : Color.BLACK;
 
 			cellStyle.setBorderBottom(BorderStyle.THIN);
-			cellStyle.setBorderBottom(width);
+//			cellStyle.setBorderBottom(width);
 			cellStyle.setBottomBorderColor(new XSSFColor(color));
 
 			cellStyle.setBorderTop(BorderStyle.THIN);
-			cellStyle.setBorderTop(width);
+//			cellStyle.setBorderTop(width);
 			cellStyle.setTopBorderColor(new XSSFColor(color));
 
 			cellStyle.setBorderLeft(BorderStyle.THIN);
-			cellStyle.setBorderLeft(width);
+//			cellStyle.setBorderLeft(width);
 			cellStyle.setLeftBorderColor(new XSSFColor(color));
 
 			cellStyle.setBorderRight(BorderStyle.THIN);
-			cellStyle.setBorderRight(width);
+//			cellStyle.setBorderRight(width);
 			cellStyle.setRightBorderColor(new XSSFColor(color));
 		}
 	}
@@ -147,7 +141,8 @@ public class ExcelStyleGenerator {
 		}
 
 		if (style.isFontBold()) {
-			font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+			font.setBold(true);
+//			font.setBoldweight(Font.BOLDWEIGHT_BOLD);
 		}
 
 		font.setItalic(style.isFontItalic());

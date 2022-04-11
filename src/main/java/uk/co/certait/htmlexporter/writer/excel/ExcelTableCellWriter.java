@@ -19,6 +19,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -61,6 +62,7 @@ public class ExcelTableCellWriter extends AbstractTableCellWriter {
 			cell.setCellValue(numericValue);
 		} else {
 			cell = sheet.getRow(rowIndex).createCell(columnIndex, Cell.CELL_TYPE_STRING);
+			cell.setCellType(Cell.CELL_TYPE_STRING);
 			cell.setCellValue(getElementText(element));
 		}
 
